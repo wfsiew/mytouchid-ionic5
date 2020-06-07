@@ -1,0 +1,10 @@
+keytool -genkey -v -keystore mytouchid-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias mytouchid
+
+ionic cordova platform add android
+ionic cordova build --release android
+
+zipalign -v -p 4 platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk aligned.apk
+
+apksigner sign --ks myfinger-key.jks --out signed.apk aligned.apk
+
+apksigner verify signed.apk
