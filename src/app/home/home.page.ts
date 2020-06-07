@@ -1,19 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FingerprintAIO, FingerprintOptions } from '@ionic-native/fingerprint-aio/ngx';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   fingerprintOptions: FingerprintOptions;
-  res = '';
+  res = {};
+  uuid = '';
 
   constructor(
-    private fingerAuth: FingerprintAIO
+    private fingerAuth: FingerprintAIO,
+    private uniqueDeviceID: UniqueDeviceID
   ) { }
+
+  async ngOnInit() {
+    try {
+      const s = await this.uniqueDeviceID.get();
+      this.uuid = s;
+    }
+    
+    catch (error) {
+      console.log(error);
+    }
+  }
 
   async showFingerprintAuthDlg() {
     this.fingerprintOptions = {

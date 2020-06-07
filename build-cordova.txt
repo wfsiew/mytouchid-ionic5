@@ -5,6 +5,6 @@ ionic cordova build --release android
 
 zipalign -v -p 4 platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk aligned.apk
 
-apksigner sign --ks myfinger-key.jks --out signed.apk aligned.apk
+apksigner sign --ks mytouchid-key.jks --out signed.apk aligned.apk
 
 apksigner verify signed.apk

@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     StatusBar,
     SplashScreen,
     FingerprintAIO,
+    UniqueDeviceID,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
