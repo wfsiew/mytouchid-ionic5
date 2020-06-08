@@ -12,6 +12,7 @@ export class HomePage implements OnInit {
   fingerprintOptions: FingerprintOptions;
   res = {};
   uuid = '';
+  uid = '';
 
   constructor(
     private fingerAuth: FingerprintAIO,
@@ -21,6 +22,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     try {
       this.uuid = this.device.uuid;
+      this.uid = this.device.serial;
     }
     
     catch (error) {
