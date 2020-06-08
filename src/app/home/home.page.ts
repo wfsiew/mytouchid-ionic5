@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
     private device: Device
   ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     try {
       this.uuid = this.device.uuid;
     }
