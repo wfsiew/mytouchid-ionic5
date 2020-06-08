@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FingerprintAIO, FingerprintOptions } from '@ionic-native/fingerprint-aio/ngx';
-import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 @Component({
   selector: 'app-home',
@@ -15,13 +15,12 @@ export class HomePage implements OnInit {
 
   constructor(
     private fingerAuth: FingerprintAIO,
-    private uniqueDeviceID: UniqueDeviceID
+    private device: Device
   ) { }
 
   async ngOnInit() {
     try {
-      const s = await this.uniqueDeviceID.get();
-      this.uuid = s;
+      this.uuid = this.device.uuid;
     }
     
     catch (error) {
